@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$")
 
 if [ -n "$FILES" ]; then
