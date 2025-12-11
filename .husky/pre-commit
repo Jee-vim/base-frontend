@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$")
+
+if [ -n "$FILES" ]; then
+  BAD=""
+  for f in $FILES; do
+    if grep -q '"use client"' "$f"; then
+      BAD="$BAD $f"
+    fi
+  done
+
+  if [ -n "$BAD" ]; then
+    echo ""
+    echo "Forbidden: \"use client\" found in:"
+    echo "$BAD"
+    exit 1
+  fi
+fi
+
+if git diff --cached --numstat | awk '{ if ($1 > 50000) { print $2 } }' | grep -q .; then
+  echo "Error: You are trying to commit a large file."
+  exit 1
+fi
+
+pnpm run check-format || (
+  echo "Run \`pnpm run format\`"
+  exit 1
+)
+
+if ! pnpm build; then
+  echo ""
+  echo "Build Failed"
+  echo "FIX YOUR GARBAGE AI SHIT CODE!!!"
+  echo ""
+  echo ""
+  exit 1
+fi
+
