@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$")
 
 if [ -n "$FILES" ]; then
