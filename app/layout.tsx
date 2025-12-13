@@ -4,6 +4,7 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import ClientProvider from "@/components/shared/layout/client-provider";
 import { AppContextProvider } from "@/components/shared/layout/context-provider";
+import QueryProvider from "@/components/shared/layout/query-provider";
 
 const fDefault = Geist({
   variable: "--font-default",
@@ -32,7 +33,9 @@ export default function RootLayout({
           className={`${fDefault.variable} ${fPrimary.variable} antialiased`}
         >
           <AppContextProvider>
-            <ClientProvider>{children}</ClientProvider>
+            <QueryProvider>
+              <ClientProvider>{children}</ClientProvider>
+            </QueryProvider>
           </AppContextProvider>
         </body>
       </html>
