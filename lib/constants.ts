@@ -4,3 +4,7 @@ export const configs = {
   AUTH_SECRET: process.env.NEXTAUTH_SECRET as string,
   AUTH_URL: process.env.NEXTAUTH_URL as string,
 };
+
+export const OV = {
+  CONFIRMATION: "CONFIRMATION",
+};

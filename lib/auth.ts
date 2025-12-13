@@ -13,7 +13,7 @@ export async function getSession() {
 }
 const resolveAuth = <T extends object>(
   target: T,
-  source: Record<string, unknown>
+  source: Record<string, unknown>,
 ) => {
   for (const key of Object.keys(source) as (keyof TAuth)[]) {
     const value = (source as any)[key];
@@ -78,7 +78,7 @@ const authOptions = {
       return token;
     },
     async session({ session, token }) {
-      resolveAuth(session, token)
+      resolveAuth(session, token);
       return session;
     },
   },

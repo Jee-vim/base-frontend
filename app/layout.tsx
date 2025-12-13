@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import ClientProvider from "@/components/shared/layout/client-provider";
+import { AppContextProvider } from "@/components/shared/layout/context-provider";
 
 const fDefault = Geist({
   variable: "--font-default",
@@ -29,7 +31,9 @@ export default function RootLayout({
         <body
           className={`${fDefault.variable} ${fPrimary.variable} antialiased`}
         >
-          {children}
+          <AppContextProvider>
+            <ClientProvider>{children}</ClientProvider>
+          </AppContextProvider>
         </body>
       </html>
     </ViewTransitions>
