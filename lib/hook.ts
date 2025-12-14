@@ -1,4 +1,5 @@
 "use-client";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useMedia } from "use-media";
 
@@ -18,4 +19,23 @@ export function useMount() {
   }, []);
 
   return mounted;
+}
+
+export function useAuth() {
+  const { data }: any = useSession();
+  const id = data?.user.id;
+  const user = data?.user;
+  const token = user?.token;
+  const email = user?.email;
+  const credentials = user?.credentials;
+  const isAuth = email && token && credentials == "verified";
+  return {
+    isAuth,
+    id,
+    name: user?.name,
+    avatar: user?.image,
+    email,
+    token,
+    credentials,
+  };
 }

@@ -5,6 +5,7 @@ import { ViewTransitions } from "next-view-transitions";
 import ClientProvider from "@/components/shared/layout/client-provider";
 import { AppContextProvider } from "@/components/shared/layout/context-provider";
 import QueryProvider from "@/components/shared/layout/query-provider";
+import { Toaster } from "sonner";
 
 const fDefault = Geist({
   variable: "--font-default",
@@ -33,6 +34,7 @@ export default function RootLayout({
           className={`${fDefault.variable} ${fPrimary.variable} antialiased`}
         >
           <AppContextProvider>
+            <Toaster />
             <QueryProvider>
               <ClientProvider>{children}</ClientProvider>
             </QueryProvider>

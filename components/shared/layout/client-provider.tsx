@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Loading from "../loading";
 import OverlayWrapper from "../overlay";
 import { useAppContext } from "@/components/shared/layout/context-provider";
+import { SessionProvider } from "next-auth/react";
 
 export default function Client({ children }: { children: React.ReactNode }) {
   const { loading, clearLoading, closeOverlay } = useAppContext();
@@ -25,8 +26,8 @@ export default function Client({ children }: { children: React.ReactNode }) {
   return (
     <>
       {loading && <Loading />}
+      <SessionProvider>{children}</SessionProvider>
       <OverlayWrapper />
-      {children}
     </>
   );
 }

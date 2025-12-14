@@ -9,6 +9,7 @@ const createAxiosInstance = (
     baseURL,
     headers: {
       "Content-Type": "application/json",
+      apiKey: configs.API_KEY,
     },
   });
 

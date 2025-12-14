@@ -22,7 +22,7 @@ const resolveAuth = <T extends object>(
     }
   }
 };
-const authOptions = {
+export const authOptions = {
   providers: [
     Credentials({
       name: "Send OTP",
@@ -31,15 +31,14 @@ const authOptions = {
       async authorize(
         credentials: Record<string, string> | undefined,
       ): Promise<any> {
-        if (!credentials || !credentials.email) return null;
+        const email = credentials?.email;
+        if (!credentials || !email) return null;
         try {
-          const { data }: any = await ENDP.auth.send_otp({
-            email: credentials.email,
-          });
-
-          const v = data?.user;
+          const { data }: any = await ENDP.auth.send_otp({ email });
+          const v = data?.user_otp;
           return {
             token_otp: v.token,
+            email,
           };
         } catch (error: any) {
           throw new Error(error?.response?.data?.message);
@@ -57,14 +56,15 @@ const authOptions = {
         try {
           const { data }: any = await ENDP.auth.verify_otp({
             otp: credentials?.otp as string,
-            token: session?.token,
+            token: session?.token_otp,
           });
+          const v = data?.user;
           return {
-            token: data?.token,
-            name: data?.name,
-            email: data?.email,
-            id: data?.id,
-            avatar: data?.avatar,
+            token: data?.access_token,
+            name: v?.name,
+            email: v?.email,
+            id: v?.id,
+            image: v?.avatar,
           };
         } catch (error: any) {
           throw new Error(error?.response?.data?.message);
@@ -92,4 +92,21 @@ export function auth(
     | []
 ) {
   return getServerSession(...args, authOptions);
+}
+
+export async function getAuth() {
+  const session: any = await getServerSession(authOptions);
+  const user = session?.user;
+  const isAuth = Boolean(
+    session?.token && user?.email && user.credentials == "verified",
+  );
+
+  return {
+    isAuth,
+    name: user?.name as string,
+    id: user?.id,
+    avatar: user?.image as string,
+    credentials: user?.credentials as string,
+    createdAt: user?.created_at as string,
+  };
 }
