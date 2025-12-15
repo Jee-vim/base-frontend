@@ -1,9 +1,24 @@
-// NOTE this for global or some endpoint that just 1 or 2
+// NOTE this for global or some endpoint that just 1 or 2 version
 
 import { K } from "@/lib/constants";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ENDP } from "../endpoint";
+import { IParams } from "@/types/global";
 
+// example with params
+export function useAllUser(p?: IParams) {
+  const { data, isLoading } = useQuery({
+    queryKey: [K.USER, p],
+    queryFn: () => ENDP.global.user(p),
+  });
+
+  return {
+    respAllUser: data,
+    isLoadUser: isLoading,
+  };
+}
+
+// example without params
 export function useAllBanner() {
   const { data } = useQuery({
     queryKey: [K.BANNER],
@@ -14,6 +29,8 @@ export function useAllBanner() {
     respAllBanner: data,
   };
 }
+
+// example based id
 export function useGetBanner(id?: string) {
   const { data } = useQuery({
     queryKey: [K.BANNER, id],
@@ -25,6 +42,8 @@ export function useGetBanner(id?: string) {
     respGetBanner: data,
   };
 }
+
+// example mutate
 export function usePostReview() {
   const { mutate } = useMutation({
     // NOTE dont put any, use a real body types later on

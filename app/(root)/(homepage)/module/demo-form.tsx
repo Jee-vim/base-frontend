@@ -3,7 +3,7 @@ import { DUMMY_GROUP } from "@/lib/constants";
 import { IconEmail } from "@/lib/image";
 import { VEmail, VPrice, VRequired } from "@/lib/validation";
 
-export default function Form() {
+export default function DemoForm() {
   const form = useAppForm({
     onSubmit: ({ value }) => {
       console.log(value);

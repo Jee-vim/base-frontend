@@ -8,6 +8,7 @@ export const configs = {
 
 export const K = {
   BANNER: "BANNER",
+  USER: "USER",
 };
 
 export const OV = {

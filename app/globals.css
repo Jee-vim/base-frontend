@@ -25,7 +25,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: black;
+    border-color: var(--foreground);
   }
   button {
     all: unset;
@@ -60,18 +60,6 @@
     }
   }
 }
-@utility text-* {
-  --value: --value(integer);
-  font-size: clamp(
-    calc(var(--value) * 0.8px),
-    5.985vw + 1.212rem,
-    /* 478 - 1280 */ calc(var(--value) * 1px)
-      /* value * 1px --> text-40 --> 40px */
-  );
-  line-height: 1;
-  letter-spacing: 0%;
-}
-
 .loader {
   animation: rotate 1s linear infinite;
 }
@@ -107,4 +95,22 @@
   100% {
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
+}
+
+@utility container {
+  max-width: 1280px;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 1.5vw, 2rem);
+}
+@utility text-* {
+  --value: --value(integer);
+  font-size: clamp(
+    calc(var(--value) * 0.8px),
+    5.985vw + 1.212rem,
+    /* 478 - 1280 */ calc(var(--value) * 1px)
+      /* value * 1px --> text-40 --> 40px */
+  );
+  line-height: 1;
+  letter-spacing: 0%;
 }

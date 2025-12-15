@@ -1,3 +1,4 @@
+import { IParams } from "@/types/global";
 import { Http } from "../config/method";
 
 export const ENDP = {
@@ -7,6 +8,7 @@ export const ENDP = {
     verify_otp: (b: IBVerifyOTP) => Http.post("/auth/check-otp", b),
   },
   global: {
+    user: (p?: IParams) => Http.get("/user", p),
     banner: () => Http.get("/banner"),
     banner_get: (id: string) => Http.get(`/banner/${id}`),
     review_post: (id: string) => Http.post(`/review`, { id }),
