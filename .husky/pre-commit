@@ -7,6 +7,9 @@ pnpm run format
 
 git add .
 
+echo ""
+echo "Checking for forbidden \"use client\" in page/layout files..."
+
 FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$" || true)
 
 if [ -n "$FILES" ]; then
@@ -26,8 +29,39 @@ if [ -n "$FILES" ]; then
 fi
 
 echo ""
+echo "Checking file length (max 400 lines)..."
+
+MAX_LINES=400
+BAD_LINES=""
+
+FILES=$(git diff --cached --name-only)
+
+for f in $FILES; do
+  # skip deleted files
+  if [ ! -f "$f" ]; then
+    continue
+  fi
+
+  LINES=$(wc -l < "$f")
+
+  if [ "$LINES" -gt "$MAX_LINES" ]; then
+    BAD_LINES="$BAD_LINES\n$f ($LINES lines)"
+  fi
+done
+
+if [ -n "$BAD_LINES" ]; then
+  echo ""
+  echo "Error: File exceeds ${MAX_LINES} lines:"
+  echo "$BAD_LINES"
+  exit 1
+fi
+
+echo ""
 echo "Running security audit (high+)..."
 pnpm audit --audit-level high
+
+echo ""
+echo "Checking for large staged files..."
 
 if git diff --cached --numstat | awk '{ if ($1 > 50000) { print $2 } }' | grep -q .; then
   echo "Error: You are trying to commit a large file."
@@ -37,3 +71,6 @@ fi
 echo ""
 echo "Running build..."
 pnpm build
+
+echo ""
+echo "All checks passed. Commit allowed."
