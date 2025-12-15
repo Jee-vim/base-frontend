@@ -56,7 +56,7 @@
       @apply font-medium text-15;
     }
     .input-trigger {
-      @apply w-full h-[35px] px-[8px] border flex items-center gap-[8px] rounded-[4px];
+      @apply w-full h-[35px] px-[8px] cursor-pointer border flex items-center gap-[8px] rounded-[4px];
     }
     input,
     .input {

@@ -50,6 +50,17 @@ export default function DemoForm() {
           validators={{ onChange: VRequired }}
         />
         <form.AppField
+          name="fruit"
+          children={(f) => (
+            <f.FSelectSearch
+              label="Fruit"
+              placeholder="select"
+              option={DUMMY_GROUP[0].items}
+            />
+          )}
+          validators={{ onChange: VRequired }}
+        />
+        <form.AppField
           name="password"
           children={(f) => (
             <f.FInputPassword label="Password" placeholder="pass" />

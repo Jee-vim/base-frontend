@@ -41,17 +41,18 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
         <RSelect.Portal>
           <RSelect.Content
             className={cn(
-              "rounded-md border bg-background z-[99]",
+              "min-w-[220px] mt-1 rounded-md border bg-background z-[99]",
               contentClassName,
             )}
             align="start"
+            alignOffset={-9}
             position="popper"
           >
             <RSelect.ScrollUpButton className="flex h-[25px] cursor-default items-center justify-center bg-background text-foreground">
               <GoChevronUp />
             </RSelect.ScrollUpButton>
 
-            <RSelect.Viewport className="p-[5px]">
+            <RSelect.Viewport className="p-2">
               {groups.map((group, idx) => (
                 <React.Fragment key={idx}>
                   <RSelect.Group>

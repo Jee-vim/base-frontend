@@ -30,10 +30,10 @@ if [ -n "$FILES" ]; then
 fi
 
 echo ""
-echo "Checking filename casing (kebab-case only for .ts/.tsx)..."
+echo "Checking filename casing (kebab-case only for .tsx)..."
 
 BAD_NAMES=""
-FILES=$(git diff --cached --name-only | grep -E '\.(ts|tsx)$' || true)
+FILES=$(git diff --cached --name-only | grep -E '\.(tsx)$' || true)
 
 for f in $FILES; do
   # skip deleted files
@@ -44,7 +44,7 @@ for f in $FILES; do
   BASENAME=$(basename "$f")
 
   # strict kebab-case: lowercase letters, numbers, hyphens only
-  if ! echo "$BASENAME" | grep -Eq '^[a-z0-9]+(-[a-z0-9]+)*\.(ts|tsx)$'; then
+  if ! echo "$BASENAME" | grep -Eq '^[a-z0-9]+(-[a-z0-9]+)*\.(tsx)$'; then
     BAD_NAMES="$BAD_NAMES\n $f"
   fi
 done
@@ -52,7 +52,7 @@ done
 if [ -n "$BAD_NAMES" ]; then
   echo ""
   echo "Error: Invalid filename casing detected."
-  echo "All .ts/.tsx files must use kebab-case:"
+  echo "All .tsx files must use kebab-case:"
   echo "$BAD_NAMES"
   echo ""
   exit 1

@@ -1,4 +1,4 @@
-import { IOpt } from "@/types/global";
+import { IGroups, IOpt } from "@/types/global";
 
 export interface InputCommonProps {
   label?: string;
@@ -10,7 +10,15 @@ export interface InputFormProps
     React.InputHTMLAttributes<HTMLInputElement> {}
 
 export interface SelectProps extends InputCommonProps {
-  groups: IOpt[];
+  groups: IGroups[];
+  placeholder?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  triggerClassName?: string;
+  contentClassName?: string;
+}
+export interface SelectSearchProps extends InputCommonProps {
+  option: IOpt[];
   placeholder?: string;
   value?: string;
   onValueChange?: (value: string) => void;

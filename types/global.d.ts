@@ -39,8 +39,12 @@ declare interface UncontrolledOverlay extends IOverlay {
 }
 
 declare type IDialogDrawer = ControlledOverlay | UncontrolledOverlay;
-
 declare interface IOpt {
+  value: string;
   label: string;
-  items: { value: string; label: string; disabled?: boolean }[];
+  disabled?: boolean;
+}
+declare interface IGroups {
+  label: string;
+  items: IOpt[];
 }
