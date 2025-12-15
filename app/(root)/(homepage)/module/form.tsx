@@ -1,6 +1,7 @@
 import { useAppForm } from "@/components/shared/form";
+import { DUMMY_GROUP } from "@/lib/constants";
 import { IconEmail } from "@/lib/image";
-import { VRequired } from "@/lib/validation";
+import { VEmail, VPrice, VRequired } from "@/lib/validation";
 
 export default function Form() {
   const form = useAppForm({
@@ -8,8 +9,9 @@ export default function Form() {
       console.log(value);
     },
   });
+
   return (
-    <div>
+    <div className="max-w-xl">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -19,12 +21,32 @@ export default function Form() {
       >
         <form.AppField
           name="name"
-          children={(f) => <f.InputForm label="Name" />}
+          children={(f) => <f.FInput label="Name" placeholder="insert name" />}
           validators={{ onChange: VRequired }}
         />
         <form.AppField
-          name="gender"
-          children={(f) => <f.InputForm label="Gender" icon={IconEmail} />}
+          name="email"
+          children={(f) => (
+            <f.FInput
+              label="Email"
+              icon={IconEmail}
+              placeholder="insert name"
+            />
+          )}
+          validators={{ onChange: VEmail }}
+        />
+        <form.AppField
+          name="price"
+          children={(f) => (
+            <f.FInputPrice label="Price" placeholder="insert name" />
+          )}
+          validators={{ onChange: VPrice }}
+        />
+        <form.AppField
+          name="eat"
+          children={(f) => (
+            <f.FSelect label="Eat" placeholder="select" groups={DUMMY_GROUP} />
+          )}
           validators={{ onChange: VRequired }}
         />
         <form.SubmitBtn />

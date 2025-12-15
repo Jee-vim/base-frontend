@@ -1,5 +1,5 @@
 import * as z from "zod";
-import { rgxEmail, rgxRequired } from "./regex";
+import { rgxEmail, rgxPrice, rgxRequired } from "./regex";
 
 export const VRequired = z
   .string({ message: rgxRequired.msg.required })
@@ -11,3 +11,6 @@ export const VNumbOnly = z
 export const VEmail = z
   .string({ message: rgxEmail.msg.required })
   .regex(rgxEmail.regex, rgxEmail.msg.invalid);
+export const VPrice = z
+  .string({ message: rgxPrice.msg.required })
+  .regex(rgxPrice.regex, rgxPrice.msg.invalid);

@@ -1,20 +1,16 @@
 import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
 import Image from "next/image";
+import { InputFormProps } from "../types";
 
-interface InputFormProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label?: string;
-  icon?: string;
-}
-
-export function InputForm({ label, icon, ...inputProps }: InputFormProps) {
+export function FInput({ label, icon, ...inputProps }: InputFormProps) {
   const field = useFieldContext<string>();
   const errors = useStore(field.store, (state) => state.meta.errors);
 
   return (
     <div className="input-wrapper">
       {label && <label htmlFor={field.name}>{label}</label>}
-      <div>
+      <div className="input-trigger">
         {icon && (
           <Image src={icon} alt={`${field.name}-icon`} width={18} height={18} />
         )}

@@ -13,3 +13,22 @@ export const K = {
 export const OV = {
   CONFIRMATION: "CONFIRMATION",
 };
+
+export const DUMMY_GROUP = [
+  {
+    label: "Fruits",
+    items: [
+      { value: "apple", label: "Apple" },
+      { value: "banana", label: "Banana" },
+      { value: "orange", label: "Orange" },
+    ],
+  },
+  {
+    label: "Vegetables",
+    items: [
+      { value: "carrot", label: "Carrot" },
+      { value: "broccoli", label: "Broccoli" },
+      { value: "spinach", label: "Spinach" },
+    ],
+  },
+];

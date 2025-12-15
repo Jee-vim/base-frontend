@@ -44,16 +44,16 @@
 }
 @layer components {
   .input-wrapper {
-    @apply flex flex-col gap-1;
+    @apply flex flex-col gap-1 mb-[12px];
 
     & > label {
-      @apply font-medium text-16;
+      @apply font-medium text-15;
     }
-    & > div {
-      @apply h-[35px] px-1 border flex items-center gap-[8px] rounded-[4px];
+    .input-trigger {
+      @apply w-full h-[35px] px-1 border flex items-center gap-[8px] rounded-[4px] data-[placeholder]:text-gray-500/90;
     }
-    & > div > input {
-      @apply size-full;
+    .input-trigger > :last-child {
+      @apply size-full text-14;
     }
     & > .error {
       @apply text-red-500 text-xs font-medium;
