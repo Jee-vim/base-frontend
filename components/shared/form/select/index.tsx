@@ -25,7 +25,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
           {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
           <RSelect.Trigger
             className={cn(
-              "inline-flex items-center justify-between",
+              "input inline-flex items-center justify-between",
               triggerClassName,
             )}
             aria-label="Select"

@@ -50,10 +50,11 @@
       @apply font-medium text-15;
     }
     .input-trigger {
-      @apply w-full h-[35px] px-1 border flex items-center gap-[8px] rounded-[4px] data-[placeholder]:text-gray-500/90;
+      @apply w-full h-[35px] px-[8px] border flex items-center gap-[8px] rounded-[4px];
     }
-    .input-trigger > :last-child {
-      @apply size-full text-14;
+    input,
+    .input {
+      @apply size-full text-14 data-[placeholder]:text-gray-500/90 *:data-[placeholder]:text-gray-500/90;
     }
     & > .error {
       @apply text-red-500 text-xs font-medium;

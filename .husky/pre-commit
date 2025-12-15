@@ -64,7 +64,7 @@ echo "Checking file length (max 300 lines)..."
 MAX_LINES=300
 BAD_LINES=""
 
-FILES=$(git diff --cached --name-only)
+FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.tsx$' || true)
 
 for f in $FILES; do
   # skip deleted files

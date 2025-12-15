@@ -7,12 +7,14 @@ import SubmitBtn from "./submit";
 import ResetBtn from "./reset";
 import FSelect from "./select/f-select";
 import { FInputPrice } from "./input/f-input-price";
+import { FInputPassword } from "./input/f-input-password";
 
 // ref: https://github.com/TanStack/form/discussions/1200
 export const { useAppForm } = createFormHook({
   fieldComponents: {
     FInput,
     FInputPrice,
+    FInputPassword,
     FSelect,
   },
   formComponents: {
