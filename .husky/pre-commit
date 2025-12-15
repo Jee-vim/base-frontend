@@ -24,14 +24,15 @@ if [ -n "$FILES" ]; then
     echo ""
     echo "Forbidden: \"use client\" found in:"
     echo "$BAD"
+  echo ""
     exit 1
   fi
 fi
 
 echo ""
-echo "Checking file length (max 400 lines)..."
+echo "Checking file length (max 300 lines)..."
 
-MAX_LINES=400
+MAX_LINES=300
 BAD_LINES=""
 
 FILES=$(git diff --cached --name-only)
@@ -45,7 +46,7 @@ for f in $FILES; do
   LINES=$(wc -l < "$f")
 
   if [ "$LINES" -gt "$MAX_LINES" ]; then
-    BAD_LINES="$BAD_LINES\n$f ($LINES lines)"
+    BAD_LINES="$BAD_LINES\n $f ($LINES lines)"
   fi
 done
 
@@ -53,6 +54,7 @@ if [ -n "$BAD_LINES" ]; then
   echo ""
   echo "Error: File exceeds ${MAX_LINES} lines:"
   echo "$BAD_LINES"
+  echo ""
   exit 1
 fi
 
@@ -65,6 +67,7 @@ echo "Checking for large staged files..."
 
 if git diff --cached --numstat | awk '{ if ($1 > 50000) { print $2 } }' | grep -q .; then
   echo "Error: You are trying to commit a large file."
+  echo ""
   exit 1
 fi
 
