@@ -1,3 +1,5 @@
+import { Button } from "../button";
+
 export default function SubmitBtn() {
-  return <button>submit</button>;
+  return <Button type="submit">Submit</Button>;
 }

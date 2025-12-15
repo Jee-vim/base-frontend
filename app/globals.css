@@ -4,12 +4,18 @@
   --background: #f9fafb;
   --foreground: #171717;
   --accent: #689d6a;
+  --primary: #33aaa4;
+  /* --primary-100: #33aaa4; */
+  /* --primary-200: #33aaa4; */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  /* --color-primary-100: var(--primary-100); */
+  /* --color-primary-200: var(--primary-200); */
   --font-default: var(--font-default), sans-serif;
   --font-primary: var(--font-primary), serif;
 }

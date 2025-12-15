@@ -4,7 +4,6 @@ export const { fieldContext, useFieldContext, formContext, useFormContext } =
 
 import { FInput } from "./input/f-input";
 import SubmitBtn from "./submit";
-import ResetBtn from "./reset";
 import FSelect from "./select/f-select";
 import { FInputPrice } from "./input/f-input-price";
 import { FInputPassword } from "./input/f-input-password";
@@ -19,7 +18,6 @@ export const { useAppForm } = createFormHook({
   },
   formComponents: {
     SubmitBtn,
-    ResetBtn,
   },
   fieldContext: fieldContext,
   formContext: formContext,
