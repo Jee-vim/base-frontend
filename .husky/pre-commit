@@ -1,6 +1,13 @@
 #!/usr/bin/env sh
+set -e
 
-FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$")
+echo ""
+echo "Running formatter..."
+pnpm run format
+
+git add .
+
+FILES=$(git diff --cached --name-only | grep -E "(page|layout)\.tsx$" || true)
 
 if [ -n "$FILES" ]; then
   BAD=""
@@ -18,31 +25,15 @@ if [ -n "$FILES" ]; then
   fi
 fi
 
-
+echo ""
 echo "Running security audit (high+)..."
-if ! pnpm audit --audit-level high; then
-  echo ""
-  echo "Security audit failed"
-  echo "Fix vulnerable dependencies before committing."
-  exit 1
-fi
+pnpm audit --audit-level high
 
 if git diff --cached --numstat | awk '{ if ($1 > 50000) { print $2 } }' | grep -q .; then
   echo "Error: You are trying to commit a large file."
   exit 1
 fi
 
-pnpm run check-format || (
-  echo "Run \`pnpm run format\`"
-  exit 1
-)
-
-if ! pnpm build; then
-  echo ""
-  echo "Build Failed"
-  echo "FIX YOUR GARBAGE AI SHIT CODE!!!"
-  echo ""
-  echo ""
-  exit 1
-fi
-
+echo ""
+echo "Running build..."
+pnpm build
