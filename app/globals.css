@@ -14,10 +14,22 @@
   --font-primary: var(--font-primary), serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-default);
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-default);
+  }
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+  button:focus,
+  button:focus-visible,
+  button:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
 .loader {
   animation: rotate 1s linear infinite;
