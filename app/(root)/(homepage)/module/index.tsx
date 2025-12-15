@@ -4,6 +4,7 @@ import CDrawer from "@/components/shared/custom/drawer";
 import { useAppContext } from "@/components/shared/layout/context-provider";
 import { OV } from "@/lib/constants";
 import { useAllBanner, useGetBanner, usePostReview } from "@/services/queries";
+import Form from "./form";
 
 export default function Index() {
   const { respAllBanner } = useAllBanner();
@@ -28,6 +29,7 @@ export default function Index() {
       <button type="button" onClick={handleOpen}>
         show
       </button>
+      <Form />
     </div>
   );
 }

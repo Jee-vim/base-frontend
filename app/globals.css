@@ -20,6 +20,13 @@
     color: var(--foreground);
     font-family: var(--font-default);
   }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: black;
+  }
   button {
     all: unset;
     cursor: pointer;
@@ -30,7 +37,41 @@
     outline: none !important;
     box-shadow: none !important;
   }
+
+  input {
+    @apply appearance-none outline-none ring-0 focus:ring-0 focus:outline-none;
+  }
 }
+@layer components {
+  .input-wrapper {
+    @apply flex flex-col gap-1;
+
+    & > label {
+      @apply font-medium text-16;
+    }
+    & > div {
+      @apply h-[35px] px-1 border flex items-center gap-[8px] rounded-[4px];
+    }
+    & > div > input {
+      @apply size-full;
+    }
+    & > .error {
+      @apply text-red-500 text-xs font-medium;
+    }
+  }
+}
+@utility text-* {
+  --value: --value(integer);
+  font-size: clamp(
+    calc(var(--value) * 0.8px),
+    5.985vw + 1.212rem,
+    /* 478 - 1280 */ calc(var(--value) * 1px)
+      /* value * 1px --> text-40 --> 40px */
+  );
+  line-height: 1;
+  letter-spacing: 0%;
+}
+
 .loader {
   animation: rotate 1s linear infinite;
 }
