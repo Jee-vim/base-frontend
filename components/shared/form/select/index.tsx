@@ -41,7 +41,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
         <RSelect.Portal>
           <RSelect.Content
             className={cn(
-              "rounded-b-md border bg-background",
+              "rounded-md border bg-background z-[99]",
               contentClassName,
             )}
             align="start"

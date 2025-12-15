@@ -17,16 +17,25 @@ export default function Index() {
     postReview("some-body");
   };
 
+  const handleForm = () => {
+    setOpenOverlay({
+      id: OV.FORM,
+    });
+  };
+
   const handleOpen = () => {
     setOpenOverlay({
       id: OV.CONFIRMATION,
     });
   };
   return (
-    <div>
+    <div className="flex gap-4 flex-col">
       <CDrawer trigger={<button type="button">show</button>}>hel</CDrawer>
       <CDialog trigger={<button type="button">show</button>}>helo</CDialog>
       <button type="button" onClick={handleOpen}>
+        show
+      </button>
+      <button type="button" onClick={handleForm}>
         show
       </button>
       <Form />
