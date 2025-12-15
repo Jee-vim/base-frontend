@@ -6,6 +6,10 @@ export const configs = {
   AUTH_URL: process.env.NEXTAUTH_URL as string,
 };
 
+export const K = {
+  BANNER: "BANNER",
+};
+
 export const OV = {
   CONFIRMATION: "CONFIRMATION",
 };
