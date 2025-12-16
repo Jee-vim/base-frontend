@@ -1,5 +1,6 @@
 "use client";
 import DemoForm from "./demo-form";
+import DemoMapper from "./demo-mapper";
 import DemoOverlay from "./demo-overlay";
 import DemoQueries from "./demo-queries";
 
@@ -9,6 +10,7 @@ export default function Index() {
       <DemoOverlay />
       <DemoForm />
       <DemoQueries />
+      <DemoMapper />
     </div>
   );
 }
