@@ -50,9 +50,9 @@ export function usePostReview() {
     mutationFn: (b: any) => ENDP.global.review_post(b),
     meta: {
       // NOTE: meta are optional but i suggest u should using it
-      invalidatesQuery: [K.BANNER], // NOTE: put query key api that u need to inavalidates query (refetching after success)
-      errorMsg: "Failed bla bla",
-      successMsg: "Success bla bla",
+      invalidatesQuery: [[K.BANNER]], // NOTE: put query key api that u need to inavalidates query (refetching after success)
+      errorMsg: "Failed Posting",
+      successMsg: "Success Posting",
     },
   });
   return {

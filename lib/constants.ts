@@ -34,3 +34,12 @@ export const DUMMY_GROUP = [
     ],
   },
 ];
+
+// defined route like this
+export const RTR = {
+  project: () => `/project`,
+  projectID: (id: string) => `/project/${id}`,
+
+  blog: () => `/blog`,
+  blogID: (id: string) => `/blog/${id}`,
+};
