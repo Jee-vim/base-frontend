@@ -13,11 +13,3 @@ export const rgxEmail = {
     invalid: "email-invalid",
   },
 };
-
-export const rgxPrice = {
-  regex: /^(?:2000|[2-9]\d{3}|\d{5,})$/,
-  msg: {
-    required: "field-required",
-    invalid: "price-min-2000",
-  },
-};

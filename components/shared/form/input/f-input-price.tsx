@@ -4,10 +4,10 @@ import Image from "next/image";
 import { InputFormProps } from "../types";
 
 export function FInputPrice({ label, icon, ...inputProps }: InputFormProps) {
-  const field = useFieldContext<string>();
+  const field = useFieldContext<number>();
   const errors = useStore(field.store, (state) => state.meta.errors);
 
-  const formatIDR = (value: string | number) => {
+  const formatIDR = (value: number | undefined) => {
     if (!value) return "";
 
     const num = typeof value === "string" ? Number(value) : value;
@@ -35,7 +35,7 @@ export function FInputPrice({ label, icon, ...inputProps }: InputFormProps) {
           value={formatIDR(field.state.value ?? "")}
           onChange={(e) => {
             const digitsOnly = e.target.value.replace(/\D/g, "");
-            field.setValue(digitsOnly);
+            field.setValue(digitsOnly ? Number(digitsOnly) : 0);
           }}
           onBlur={field.handleBlur}
         />

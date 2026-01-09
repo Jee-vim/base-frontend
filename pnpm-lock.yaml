@@ -6,6 +6,7 @@ settings:
 
 overrides:
   next@>=16.0.0-beta.0 <16.0.9: ">=16.0.9"
+  preact@>=10.28.0 <10.28.2: ">=10.28.2"
 
 importers:
   .:
@@ -3408,12 +3409,12 @@ packages:
         integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==,
       }
     peerDependencies:
-      preact: ">=10"
+      preact: ">=10.28.2"
 
-  preact@10.28.0:
+  preact@10.28.2:
     resolution:
       {
-        integrity: sha512-rytDAoiXr3+t6OIP3WGlDd0ouCUG1iCWzkcY3++Nreuoi17y6T5i/zRhe6uYfoVcxq6YU+sBtJouuRDsq8vvqA==,
+        integrity: sha512-lbteaWGzGHdlIuiJ0l2Jq454m6kcpI1zNje6d8MlGAFlYvP2GO4ibnat7P74Esfz4sPTdM6UxtTwh/d3pwM9JA==,
       }
 
   prelude-ls@1.2.1:
@@ -6052,8 +6053,8 @@ snapshots:
       next: 16.0.10(@babel/core@7.28.5)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       oauth: 0.9.15
       openid-client: 5.7.1
-      preact: 10.28.0
-      preact-render-to-string: 5.2.6(preact@10.28.0)
+      preact: 10.28.2
+      preact-render-to-string: 5.2.6(preact@10.28.2)
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
       uuid: 8.3.2
@@ -6197,12 +6198,12 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact-render-to-string@5.2.6(preact@10.28.0):
+  preact-render-to-string@5.2.6(preact@10.28.2):
     dependencies:
-      preact: 10.28.0
+      preact: 10.28.2
       pretty-format: 3.8.0
 
-  preact@10.28.0: {}
+  preact@10.28.2: {}
 
   prelude-ls@1.2.1: {}
 
