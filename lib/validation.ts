@@ -12,3 +12,6 @@ export const VEmail = z
   .string({ message: rgxEmail.msg.required })
   .regex(rgxEmail.regex, rgxEmail.msg.invalid);
 export const VPrice = z.number({ message: rgxRequired.msg.required });
+export const VBool = z.boolean({
+  message: rgxRequired.msg.required,
+});

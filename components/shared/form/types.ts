@@ -12,6 +12,13 @@ export interface InputFormProps
 export interface InputAreaFormProps
   extends InputCommonProps,
     React.InputHTMLAttributes<HTMLTextAreaElement> {}
+type RadioValue = string | number | boolean;
+
+export interface InputRadioFormProps<T extends RadioValue>
+  extends InputCommonProps,
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
+  optionValue: T;
+}
 
 export interface SelectProps extends InputCommonProps {
   groups: IGroups[];

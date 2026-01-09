@@ -1,7 +1,7 @@
 import { useAppForm } from "@/components/shared/form";
 import { DUMMY_GROUP } from "@/lib/constants";
 import { IconEmail } from "@/lib/image";
-import { VEmail, VPrice, VRequired } from "@/lib/validation";
+import { VBool, VEmail, VPrice, VRequired } from "@/lib/validation";
 
 export default function DemoForm() {
   const form = useAppForm({
@@ -19,22 +19,22 @@ export default function DemoForm() {
           form.handleSubmit();
         }}
       >
-        {/* <form.AppField */}
-        {/*   name="name" */}
-        {/*   children={(f) => <f.FInput label="Name" placeholder="insert name" />} */}
-        {/*   validators={{ onChange: VRequired }} */}
-        {/* /> */}
-        {/* <form.AppField */}
-        {/*   name="email" */}
-        {/*   children={(f) => ( */}
-        {/*     <f.FInput */}
-        {/*       label="Email" */}
-        {/*       icon={IconEmail} */}
-        {/*       placeholder="insert name" */}
-        {/*     /> */}
-        {/*   )} */}
-        {/*   validators={{ onChange: VEmail }} */}
-        {/* /> */}
+        <form.AppField
+          name="name"
+          children={(f) => <f.FInput label="Name" placeholder="insert name" />}
+          validators={{ onChange: VRequired }}
+        />
+        <form.AppField
+          name="email"
+          children={(f) => (
+            <f.FInput
+              label="Email"
+              icon={IconEmail}
+              placeholder="insert name"
+            />
+          )}
+          validators={{ onChange: VEmail }}
+        />
         <form.AppField
           name="price"
           children={(f) => (
@@ -43,37 +43,47 @@ export default function DemoForm() {
           validators={{ onChange: VPrice }}
         />
         <form.AppField
-          name="title"
+          name="radio"
           children={(f) => (
-            <f.FInputArea label="Price" placeholder="insert name" />
+            <>
+              <f.FInputRadio optionValue={true} label="true" />
+              <f.FInputRadio optionValue={false} label="false" />
+            </>
+          )}
+          validators={{ onChange: VBool }}
+        />
+        <form.AppField
+          name="area"
+          children={(f) => (
+            <f.FInputArea label="area" placeholder="insert name" />
           )}
           validators={{ onChange: VRequired }}
         />
-        {/* <form.AppField */}
-        {/*   name="eat" */}
-        {/*   children={(f) => ( */}
-        {/*     <f.FSelect label="Eat" placeholder="select" groups={DUMMY_GROUP} /> */}
-        {/*   )} */}
-        {/*   validators={{ onChange: VRequired }} */}
-        {/* /> */}
-        {/* <form.AppField */}
-        {/*   name="fruit" */}
-        {/*   children={(f) => ( */}
-        {/*     <f.FSelectSearch */}
-        {/*       label="Fruit" */}
-        {/*       placeholder="select" */}
-        {/*       option={DUMMY_GROUP[0].items} */}
-        {/*     /> */}
-        {/*   )} */}
-        {/*   validators={{ onChange: VRequired }} */}
-        {/* /> */}
-        {/* <form.AppField */}
-        {/*   name="password" */}
-        {/*   children={(f) => ( */}
-        {/*     <f.FInputPassword label="Password" placeholder="pass" /> */}
-        {/*   )} */}
-        {/*   validators={{ onChange: VRequired }} */}
-        {/* /> */}
+        <form.AppField
+          name="eat"
+          children={(f) => (
+            <f.FSelect label="Eat" placeholder="select" groups={DUMMY_GROUP} />
+          )}
+          validators={{ onChange: VRequired }}
+        />
+        <form.AppField
+          name="fruit"
+          children={(f) => (
+            <f.FSelectSearch
+              label="Fruit"
+              placeholder="select"
+              option={DUMMY_GROUP[0].items}
+            />
+          )}
+          validators={{ onChange: VRequired }}
+        />
+        <form.AppField
+          name="password"
+          children={(f) => (
+            <f.FInputPassword label="Password" placeholder="pass" />
+          )}
+          validators={{ onChange: VRequired }}
+        />
         <form.SubmitBtn />
       </form>
     </div>
