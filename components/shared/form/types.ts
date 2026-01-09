@@ -3,11 +3,15 @@ import { IGroups, IOpt } from "@/types/global";
 export interface InputCommonProps {
   label?: string;
   icon?: string;
+  info?: string;
 }
 
 export interface InputFormProps
   extends InputCommonProps,
     React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputAreaFormProps
+  extends InputCommonProps,
+    React.InputHTMLAttributes<HTMLTextAreaElement> {}
 
 export interface SelectProps extends InputCommonProps {
   groups: IGroups[];

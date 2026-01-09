@@ -8,6 +8,7 @@ import FSelect from "./select/f-select";
 import { FInputPrice } from "./input/f-input-price";
 import { FInputPassword } from "./input/f-input-password";
 import FSelectSearch from "./select/f-select-search";
+import FInputArea from "./input/f-input-area";
 
 // ref: https://github.com/TanStack/form/discussions/1200
 export const { useAppForm } = createFormHook({
@@ -15,6 +16,7 @@ export const { useAppForm } = createFormHook({
     FInput,
     FInputPrice,
     FInputPassword,
+    FInputArea,
     FSelect,
     FSelectSearch,
   },

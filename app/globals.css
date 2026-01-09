@@ -44,7 +44,8 @@
     box-shadow: none !important;
   }
 
-  input {
+  input,
+  textarea {
     @apply appearance-none outline-none ring-0 focus:ring-0 focus:outline-none;
   }
 }

@@ -42,6 +42,13 @@ export default function DemoForm() {
           )}
           validators={{ onChange: VPrice }}
         />
+        <form.AppField
+          name="title"
+          children={(f) => (
+            <f.FInputArea label="Price" placeholder="insert name" />
+          )}
+          validators={{ onChange: VRequired }}
+        />
         {/* <form.AppField */}
         {/*   name="eat" */}
         {/*   children={(f) => ( */}
