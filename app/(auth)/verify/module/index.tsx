@@ -1,5 +1,5 @@
 "use client";
-import InputOtp from "@/components/shared/form/input/input-otp";
+import Otp from "@/components/shared/form/input/otp";
 import { useAppContext } from "@/components/shared/layout/context-provider";
 import { signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -28,7 +28,7 @@ export default function Index() {
   }, [otp.length]);
   return (
     <div className="flex items-center justify-center h-dvh">
-      <InputOtp value={otp} onChange={(e) => setOtp(e)} />
+      <Otp value={otp} onChange={(e) => setOtp(e)} />
     </div>
   );
 }

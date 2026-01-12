@@ -7,11 +7,7 @@ interface OtpInputProps {
   length?: number;
 }
 
-export default function InputOtp({
-  value,
-  onChange,
-  length = 6,
-}: OtpInputProps) {
+export default function Otp({ value, onChange, length = 6 }: OtpInputProps) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
 
   const chars = value

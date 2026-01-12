@@ -1,7 +1,7 @@
 import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
-import Image from "next/image";
 import { InputFormProps } from "../types";
+import { Input } from "./input";
 
 export default function FInputPrice({
   label,
@@ -28,22 +28,17 @@ export default function FInputPrice({
   return (
     <div className="input-wrapper">
       {label && <label htmlFor={field.name}>{label}</label>}
-      <div className="input-trigger">
-        {icon && (
-          <Image src={icon} alt={`${field.name}-icon`} width={18} height={18} />
-        )}
-        <input
-          {...inputProps}
-          id={field.name}
-          name={field.name}
-          value={formatIDR(field.state.value ?? "")}
-          onChange={(e) => {
-            const digitsOnly = e.target.value.replace(/\D/g, "");
-            field.setValue(digitsOnly ? Number(digitsOnly) : 0);
-          }}
-          onBlur={field.handleBlur}
-        />
-      </div>
+      <Input
+        {...inputProps}
+        id={field.name}
+        name={field.name}
+        value={formatIDR(field.state.value ?? "")}
+        onChange={(e) => {
+          const digitsOnly = e.target.value.replace(/\D/g, "");
+          field.setValue(digitsOnly ? Number(digitsOnly) : 0);
+        }}
+        onBlur={field.handleBlur}
+      />
       {errors?.length > 0 &&
         errors.map((it) => (
           <p key={it} className="error">

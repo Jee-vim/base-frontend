@@ -10,6 +10,8 @@ import FInputPassword from "./input/f-input-password";
 import FSelectSearch from "./select/f-select-search";
 import FInputArea from "./input/f-input-area";
 import FInputRadio from "./input/f-input-radio";
+import FInputCheckbox from "./input/f-input-checkbox";
+import FInputCheckboxMulti from "./input/f-input-checkbox-multi";
 
 // ref: https://github.com/TanStack/form/discussions/1200
 export const { useAppForm } = createFormHook({
@@ -19,6 +21,8 @@ export const { useAppForm } = createFormHook({
     FInputPassword,
     FInputArea,
     FInputRadio,
+    FInputCheckbox,
+    FInputCheckboxMulti,
     FSelect,
     FSelectSearch,
   },

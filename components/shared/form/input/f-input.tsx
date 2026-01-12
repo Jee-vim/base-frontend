@@ -1,7 +1,7 @@
 import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
-import Image from "next/image";
 import { InputFormProps } from "../types";
+import { Input } from "./input";
 
 export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
   const field = useFieldContext<string>();
@@ -10,19 +10,15 @@ export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
   return (
     <div className="input-wrapper">
       {label && <label htmlFor={field.name}>{label}</label>}
-      <div className="input-trigger">
-        {icon && (
-          <Image src={icon} alt={`${field.name}-icon`} width={18} height={18} />
-        )}
-        <input
-          {...inputProps}
-          id={field.name}
-          name={field.name}
-          value={field.state.value ?? ""}
-          onChange={(e) => field.setValue(e.target.value)}
-          onBlur={field.handleBlur}
-        />
-      </div>
+      <Input
+        {...inputProps}
+        icon={icon}
+        id={field.name}
+        name={field.name}
+        value={field.state.value ?? ""}
+        onChange={(e) => field.setValue(e.target.value)}
+        onBlur={field.handleBlur}
+      />
       {errors?.length > 0 &&
         errors.map((it) => (
           <p key={it} className="error">

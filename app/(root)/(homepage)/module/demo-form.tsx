@@ -53,6 +53,28 @@ export default function DemoForm() {
           validators={{ onChange: VBool }}
         />
         <form.AppField
+          name="checkbox"
+          children={(f) => (
+            <f.FInputCheckbox optionValue={"12345"} label="checkbox" />
+          )}
+        />
+        <form.AppField
+          name="checkboxMulti"
+          children={(f) => (
+            <div className="flex flex-col gap-[8px] mt-[8px]">
+              {Array.from({ length: 5 }).map((_, id) => {
+                return (
+                  <f.FInputCheckboxMulti
+                    key={id}
+                    optionValue={String(id)}
+                    label={`checkbox ${id}`}
+                  />
+                );
+              })}
+            </div>
+          )}
+        />
+        <form.AppField
           name="area"
           children={(f) => (
             <f.FInputArea label="area" placeholder="insert name" />
