@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppContext } from "@/components/shared/layout/context-provider";
+import { useAppContext } from "@/components/layout/context-provider";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 

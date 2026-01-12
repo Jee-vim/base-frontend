@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Loading from "../loading";
 import OverlayWrapper from "../overlay";
-import { useAppContext } from "@/components/shared/layout/context-provider";
+import { useAppContext } from "@/components/layout/context-provider";
 import { SessionProvider } from "next-auth/react";
 
 export default function Client({ children }: { children: React.ReactNode }) {

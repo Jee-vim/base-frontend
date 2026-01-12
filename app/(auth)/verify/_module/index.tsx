@@ -1,6 +1,6 @@
 "use client";
-import Otp from "@/components/shared/form/input/otp";
-import { useAppContext } from "@/components/shared/layout/context-provider";
+import Otp from "@/components/form/input/otp";
+import { useAppContext } from "@/components/layout/context-provider";
 import { signIn } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

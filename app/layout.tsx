@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import ClientProvider from "@/components/shared/layout/client-provider";
-import { AppContextProvider } from "@/components/shared/layout/context-provider";
-import QueryProvider from "@/components/shared/layout/query-provider";
+import ClientProvider from "@/components/layout/client-provider";
+import { AppContextProvider } from "@/components/layout/context-provider";
+import QueryProvider from "@/components/layout/query-provider";
 import { Toaster } from "sonner";
 
 const fDefault = Geist({

@@ -1,4 +1,4 @@
-import { useAppForm } from "@/components/shared/form";
+import { useAppForm } from "@/components/form";
 import { DUMMY_GROUP } from "@/lib/constants";
 import { IconEmail } from "@/lib/image";
 import { VBool, VEmail, VPrice, VRequired } from "@/lib/validation";

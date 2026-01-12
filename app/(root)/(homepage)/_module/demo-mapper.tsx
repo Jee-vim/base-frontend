@@ -1,4 +1,4 @@
-import { Mapper } from "@/components/shared/mapper";
+import { Mapper } from "@/components/mapper";
 
 export default function DemoMapper() {
   return (

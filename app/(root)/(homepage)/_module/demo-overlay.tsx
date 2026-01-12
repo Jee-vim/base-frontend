@@ -1,6 +1,6 @@
-import CDialog from "@/components/shared/custom/dialog";
-import CDrawer from "@/components/shared/custom/drawer";
-import { useAppContext } from "@/components/shared/layout/context-provider";
+import CDialog from "@/components/custom/dialog";
+import CDrawer from "@/components/custom/drawer";
+import { useAppContext } from "@/components/layout/context-provider";
 import { OV } from "@/lib/constants";
 
 export default function DemoOverlay() {
