@@ -5,7 +5,11 @@ import { InputFormProps } from "../types";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-export function FInputPassword({ label, icon, ...inputProps }: InputFormProps) {
+export default function FInputPassword({
+  label,
+  icon,
+  ...inputProps
+}: InputFormProps) {
   const field = useFieldContext<string>();
   const errors = useStore(field.store, (state) => state.meta.errors);
   const [show, setShow] = useState(false);

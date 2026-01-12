@@ -3,7 +3,11 @@ import { useFieldContext } from "..";
 import Image from "next/image";
 import { InputFormProps } from "../types";
 
-export function FInputPrice({ label, icon, ...inputProps }: InputFormProps) {
+export default function FInputPrice({
+  label,
+  icon,
+  ...inputProps
+}: InputFormProps) {
   const field = useFieldContext<number>();
   const errors = useStore(field.store, (state) => state.meta.errors);
 

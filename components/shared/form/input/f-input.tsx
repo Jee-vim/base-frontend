@@ -3,7 +3,7 @@ import { useFieldContext } from "..";
 import Image from "next/image";
 import { InputFormProps } from "../types";
 
-export function FInput({ label, icon, ...inputProps }: InputFormProps) {
+export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
   const field = useFieldContext<string>();
   const errors = useStore(field.store, (state) => state.meta.errors);
 
