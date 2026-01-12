@@ -1,5 +1,5 @@
 import { K } from "@/lib/constants";
-import Index from "./module";
+import Index from "./_module";
 
 import {
   HydrationBoundary,

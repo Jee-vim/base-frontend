@@ -1,4 +1,4 @@
-import Index from "./module";
+import Index from "./_module";
 
 import { getAuth } from "@/lib/auth";
 export default async function Page() {
