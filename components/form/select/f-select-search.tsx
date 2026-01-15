@@ -1,7 +1,7 @@
 import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
 import { SelectSearchProps } from "../types";
-import SelectSearch from "./index-search";
+import SelectSearch from "./select-search";
 
 export default function FSelectSearch({ label, ...props }: SelectSearchProps) {
   const field = useFieldContext<string>();

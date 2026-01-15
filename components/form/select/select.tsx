@@ -16,18 +16,26 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
       onValueChange,
       triggerClassName,
       contentClassName,
+      disabled,
+      required,
     },
     ref,
   ) => {
     return (
-      <RSelect.Root value={value} onValueChange={onValueChange}>
+      <RSelect.Root
+        value={value}
+        onValueChange={onValueChange}
+        disabled={disabled}
+      >
         <div className="input-trigger">
           {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
           <RSelect.Trigger
             className={cn(
               "input inline-flex items-center justify-between",
+              "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
               triggerClassName,
             )}
+            data-required={required}
             aria-label="Select"
             ref={ref}
           >

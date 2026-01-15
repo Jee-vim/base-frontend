@@ -1,6 +1,6 @@
 import { useStore } from "@tanstack/react-form";
 import { SelectProps } from "../types";
-import Select from ".";
+import Select from "./select";
 import { useFieldContext } from "..";
 
 export default function FSelect({ label, ...props }: SelectProps) {

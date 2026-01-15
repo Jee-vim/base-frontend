@@ -16,6 +16,8 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
       onValueChange,
       triggerClassName,
       contentClassName,
+      disabled,
+      required,
     },
     ref,
   ) => {
@@ -27,14 +29,14 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
     );
 
     return (
-      <Popover.Root open={open} onOpenChange={setOpen}>
-        <Popover.Trigger asChild ref={ref}>
+      <Popover.Root open={disabled ? false : open} onOpenChange={setOpen}>
+        <Popover.Trigger asChild ref={ref} data-required={required}>
           <div
             className={cn(
               "input-trigger inline-flex items-center justify-between",
+              disabled && "cursor-not-allowed! opacity-60!",
               triggerClassName,
             )}
-            role="button"
           >
             <div className="input flex items-center gap-[8px]">
               {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
@@ -61,7 +63,7 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search..."
-              className="mb-2 h-8 w-full rounded border px-2 text-sm"
+              className="input-trigger"
             />
 
             <div className="max-h-48">

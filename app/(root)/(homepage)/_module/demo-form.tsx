@@ -21,7 +21,9 @@ export default function DemoForm() {
       >
         <form.AppField
           name="name"
-          children={(f) => <f.FInput label="Name" placeholder="insert name" />}
+          children={(f) => (
+            <f.FInput label="Name" placeholder="insert name" required />
+          )}
           validators={{ onChange: VRequired }}
         />
         <form.AppField
@@ -31,6 +33,8 @@ export default function DemoForm() {
               label="Email"
               icon={IconEmail}
               placeholder="insert name"
+              required
+              disabled
             />
           )}
           validators={{ onChange: VEmail }}
@@ -47,7 +51,7 @@ export default function DemoForm() {
           children={(f) => (
             <>
               <f.FInputRadio optionValue={true} label="true" />
-              <f.FInputRadio optionValue={false} label="false" />
+              <f.FInputRadio optionValue={false} label="false" disabled />
             </>
           )}
           validators={{ onChange: VBool }}
@@ -55,7 +59,7 @@ export default function DemoForm() {
         <form.AppField
           name="checkbox"
           children={(f) => (
-            <f.FInputCheckbox optionValue={"12345"} label="checkbox" />
+            <f.FInputCheckbox optionValue={"12345"} label="checkbox" disabled />
           )}
         />
         <form.AppField
@@ -77,14 +81,25 @@ export default function DemoForm() {
         <form.AppField
           name="area"
           children={(f) => (
-            <f.FInputArea label="area" placeholder="insert name" />
+            <f.FInputArea
+              label="area"
+              placeholder="insert name"
+              required
+              disabled
+            />
           )}
           validators={{ onChange: VRequired }}
         />
         <form.AppField
           name="eat"
           children={(f) => (
-            <f.FSelect label="Eat" placeholder="select" groups={DUMMY_GROUP} />
+            <f.FSelect
+              label="Eat"
+              placeholder="select"
+              groups={DUMMY_GROUP}
+              disabled
+              required
+            />
           )}
           validators={{ onChange: VRequired }}
         />
@@ -95,6 +110,8 @@ export default function DemoForm() {
               label="Fruit"
               placeholder="select"
               option={DUMMY_GROUP[0].items}
+              disabled
+              required
             />
           )}
           validators={{ onChange: VRequired }}

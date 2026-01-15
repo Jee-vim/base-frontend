@@ -4,6 +4,8 @@ export interface InputCommonProps {
   label?: string;
   icon?: string;
   info?: string;
+  disabled?: boolean;
+  required?: boolean;
 }
 
 export interface InputFormProps

@@ -14,6 +14,7 @@ import FInputCheckbox from "./input/f-input-checkbox";
 import FInputCheckboxMulti from "./input/f-input-checkbox-multi";
 
 // ref: https://github.com/TanStack/form/discussions/1200
+// NOTE: all input comp that use tanstact/form must stored here and start within 'f' (for consistent name)
 export const { useAppForm } = createFormHook({
   fieldComponents: {
     FInput,
