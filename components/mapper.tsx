@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
-import { PiEmpty } from "react-icons/pi";
+import { TbDatabaseOff } from "react-icons/tb";
+import { LoadingCard } from "./loading";
 type RenderItem<T> = (item: T, index: number) => React.ReactNode;
 
 interface MapperProps<T> {
@@ -20,17 +21,21 @@ export function Mapper<T>({
 }: MapperProps<T>) {
   if (isLoading) {
     return (
-      <div role="status" aria-live="polite" className="text-center">
-        Loading...
+      <div
+        role="status"
+        aria-live="polite"
+        className="text-center flex items-center justify-center"
+      >
+        <LoadingCard />
       </div>
     );
   }
 
   if (!data.length && !isLoading) {
     return (
-      <div className="flex items-center justify-center flex-col gap-1">
-        <PiEmpty size={38} />
-        <p className="text-16 font-semibold">No data available</p>
+      <div className="flex items-center justify-center flex-col gap-1 opacity-50">
+        <TbDatabaseOff size={45} />
+        <p className="text-14 font-semibold">No data available</p>
       </div>
     );
   }

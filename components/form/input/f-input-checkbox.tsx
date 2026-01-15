@@ -16,7 +16,7 @@ export default function FInputCheckbox<T>({
   const checked = field.state.value === optionValue;
 
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
+    <div className={cn("input-wrapper", className)}>
       <Checkbox
         checked={checked}
         optionValue={optionValue}
@@ -27,7 +27,7 @@ export default function FInputCheckbox<T>({
 
       {errors?.length > 0 &&
         errors.map((it) => (
-          <p key={it.message} className="text-xs text-red-600">
+          <p key={it.message} className="error">
             {it.message}
           </p>
         ))}

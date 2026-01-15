@@ -4,10 +4,8 @@ import { cn } from "@/lib/utils";
 import { InputRadioFormProps } from "../types";
 
 const styleRadio = "flex items-center gap-2 select-none w-fit cursor-pointer";
-
 const styleDot =
   "size-[16px] rounded-full border border-gray-400 flex items-center justify-center transition-colors peer-hover:border-gray-300";
-
 const styleDotInner =
   "size-[8px] rounded-full scale-0 opacity-0 transition-all duration-150";
 
