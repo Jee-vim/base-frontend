@@ -18,6 +18,7 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
       contentClassName,
       disabled,
       required,
+      trigger,
     },
     ref,
   ) => {
@@ -30,25 +31,38 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
 
     return (
       <Popover.Root open={disabled ? false : open} onOpenChange={setOpen}>
-        <Popover.Trigger asChild ref={ref} data-required={required}>
-          <div
-            className={cn(
-              "input-trigger inline-flex items-center justify-between",
-              disabled && "cursor-not-allowed! opacity-60!",
-              triggerClassName,
-            )}
+        {trigger ? (
+          <Popover.Trigger
+            asChild
+            ref={ref}
+            data-required={required}
+            className={triggerClassName}
           >
-            <div className="input flex items-center gap-[8px]">
-              {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
-              <span role="button" className="capitalize">
-                {value || (
-                  <span className="text-gray-400/90">{placeholder}</span>
+            {trigger}
+          </Popover.Trigger>
+        ) : (
+          <Popover.Trigger asChild ref={ref} data-required={required}>
+            <div
+              className={cn(
+                "input-trigger inline-flex items-center justify-between",
+                disabled && "cursor-not-allowed! opacity-60!",
+                triggerClassName,
+              )}
+            >
+              <div className="input flex items-center gap-[8px]">
+                {icon && (
+                  <Image src={icon} alt={`icon`} width={18} height={18} />
                 )}
-              </span>
+                <span role="button" className="capitalize">
+                  {value || (
+                    <span className="text-gray-400/90">{placeholder}</span>
+                  )}
+                </span>
+              </div>
+              <GoChevronDown className="text-foreground" />
             </div>
-            <GoChevronDown className="text-foreground" />
-          </div>
-        </Popover.Trigger>
+          </Popover.Trigger>
+        )}
 
         <Popover.Portal>
           <Popover.Content

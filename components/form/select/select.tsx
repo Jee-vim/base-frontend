@@ -18,6 +18,7 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
       contentClassName,
       disabled,
       required,
+      trigger,
     },
     ref,
   ) => {
@@ -27,24 +28,35 @@ const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
         onValueChange={onValueChange}
         disabled={disabled}
       >
-        <div className="input-trigger">
-          {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
+        {trigger ? (
           <RSelect.Trigger
-            className={cn(
-              "input inline-flex items-center justify-between",
-              "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
-              triggerClassName,
-            )}
+            asChild
+            className={triggerClassName}
             data-required={required}
             aria-label="Select"
-            ref={ref}
           >
-            <RSelect.Value placeholder={placeholder} />
-            <RSelect.Icon>
-              <GoChevronDown className="text-foreground" />
-            </RSelect.Icon>
+            {trigger}
           </RSelect.Trigger>
-        </div>
+        ) : (
+          <div className="input-trigger">
+            {icon && <Image src={icon} alt={`icon`} width={18} height={18} />}
+            <RSelect.Trigger
+              className={cn(
+                "input inline-flex items-center justify-between",
+                "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+                triggerClassName,
+              )}
+              data-required={required}
+              aria-label="Select"
+              ref={ref}
+            >
+              <RSelect.Value placeholder={placeholder} />
+              <RSelect.Icon>
+                <GoChevronDown className="text-foreground" />
+              </RSelect.Icon>
+            </RSelect.Trigger>
+          </div>
+        )}
 
         <RSelect.Portal>
           <RSelect.Content

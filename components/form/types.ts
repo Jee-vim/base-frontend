@@ -4,8 +4,17 @@ export interface InputCommonProps {
   label?: string;
   icon?: string;
   info?: string;
+}
+
+export interface SelectCommonProps extends InputFormProps {
   disabled?: boolean;
   required?: boolean;
+  placeholder?: string;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  triggerClassName?: string;
+  contentClassName?: string;
+  trigger?: React.ReactNode;
 }
 
 export interface InputFormProps
@@ -31,19 +40,9 @@ export interface InputCheckboxFormProps<T>
   onChange: (value: T | undefined) => void;
 }
 
-export interface SelectProps extends InputCommonProps {
+export interface SelectProps extends SelectCommonProps {
   groups: IGroups[];
-  placeholder?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  triggerClassName?: string;
-  contentClassName?: string;
 }
-export interface SelectSearchProps extends InputCommonProps {
+export interface SelectSearchProps extends SelectCommonProps {
   option: IOpt[];
-  placeholder?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  triggerClassName?: string;
-  contentClassName?: string;
 }
