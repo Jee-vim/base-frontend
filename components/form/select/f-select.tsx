@@ -1,6 +1,6 @@
 import { useStore } from "@tanstack/react-form";
 import { SelectProps } from "../types";
-import Select from "./select";
+import { UISelect } from "../../ui";
 import { useFieldContext } from "..";
 
 export default function FSelect({ label, ...props }: SelectProps) {
@@ -10,9 +10,9 @@ export default function FSelect({ label, ...props }: SelectProps) {
   return (
     <div className="input-wrapper">
       {label && <label htmlFor={field.name}>{label}</label>}
-      <Select
+      <UISelect
         value={field.state.value ?? ""}
-        onValueChange={(e) => field.setValue(e)}
+        onValueChange={(value: string) => field.setValue(value)}
         {...props}
       />
       {errors?.length > 0 &&

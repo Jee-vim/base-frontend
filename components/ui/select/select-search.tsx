@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as Popover from "@radix-ui/react-popover";
-import { SelectSearchProps } from "../types";
+import { SelectSearchProps } from "../../form/types";
 import Image from "next/image";
 import { GoChevronDown } from "react-icons/go";
 import { cn } from "@/lib/utils";
 import { IoIosCheckmark } from "react-icons/io";
 
-const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
+const UISelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
   (
     {
       option,
@@ -114,4 +114,4 @@ const SelectSearch = React.forwardRef<HTMLButtonElement, SelectSearchProps>(
   },
 );
 
-export default SelectSearch;
+export default UISelectSearch;

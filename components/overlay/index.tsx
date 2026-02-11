@@ -1,12 +1,12 @@
-import CDrawer from "../custom/drawer";
-import CDialog from "../custom/dialog";
+import { UIDrawer } from "../ui";
+import { UIDialog } from "../ui";
 import { useBreakpoint } from "@/lib/hook";
 import { useAppContext } from "../layout/context-provider";
 import { OV } from "@/lib/constants";
 import OvConfirmation from "./ov-confirmation";
 import OvForm from "./ov-form";
 
-export default function OverlayWrapper() {
+export default function OvWrapper() {
   const { isMobile } = useBreakpoint();
   const { overlay, closeOverlay } = useAppContext();
   const id = overlay?.id;
@@ -31,5 +31,9 @@ export default function OverlayWrapper() {
     children: <Content />,
   };
 
-  return isMobile ? <CDrawer {...sharedProps} /> : <CDialog {...sharedProps} />;
+  return isMobile ? (
+    <UIDrawer {...sharedProps} />
+  ) : (
+    <UIDialog {...sharedProps} />
+  );
 }

@@ -1,5 +1,5 @@
-import CDialog from "@/components/custom/dialog";
-import CDrawer from "@/components/custom/drawer";
+import { UIDialog } from "@/components/ui";
+import { UIDrawer } from "@/components/ui";
 import { useAppContext } from "@/components/layout/context-provider";
 import { OV } from "@/lib/constants";
 
@@ -19,12 +19,12 @@ export default function DemoOverlay() {
   };
   return (
     <div className="flex items-center gap-5">
-      <CDrawer trigger={<button type="button">manual drawer</button>}>
+      <UIDrawer trigger={<button type="button">manual drawer</button>}>
         hel
-      </CDrawer>
-      <CDialog trigger={<button type="button">manual dialog</button>}>
+      </UIDrawer>
+      <UIDialog trigger={<button type="button">manual dialog</button>}>
         helo
-      </CDialog>
+      </UIDialog>
       <button type="button" onClick={handleOpen}>
         auto
       </button>

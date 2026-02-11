@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import ClientProvider from "@/components/layout/client-provider";
+import LClientProvider from "@/components/layout/client-provider";
 import { AppContextProvider } from "@/components/layout/context-provider";
-import QueryProvider from "@/components/layout/query-provider";
-import ToastProvider from "@/components/layout/toast-provider";
+import LQueryProvider from "@/components/layout/query-provider";
+import LToastProvider from "@/components/layout/toast-provider";
 
 const fDefault = Geist({
   variable: "--font-default",
@@ -34,10 +34,10 @@ export default function RootLayout({
           className={`${fDefault.variable} ${fPrimary.variable} antialiased`}
         >
           <AppContextProvider>
-            <ToastProvider />
-            <QueryProvider>
-              <ClientProvider>{children}</ClientProvider>
-            </QueryProvider>
+            <LToastProvider />
+            <LQueryProvider>
+              <LClientProvider>{children}</LClientProvider>
+            </LQueryProvider>
           </AppContextProvider>
         </body>
       </html>

@@ -1,7 +1,7 @@
 import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
 import { SelectSearchProps } from "../types";
-import SelectSearch from "./select-search";
+import { UISelectSearch } from "../../ui";
 
 export default function FSelectSearch({ label, ...props }: SelectSearchProps) {
   const field = useFieldContext<string>();
@@ -10,9 +10,9 @@ export default function FSelectSearch({ label, ...props }: SelectSearchProps) {
   return (
     <div className="input-wrapper">
       {label && <label htmlFor={field.name}>{label}</label>}
-      <SelectSearch
+      <UISelectSearch
         value={field.state.value ?? ""}
-        onValueChange={(e) => field.setValue(e)}
+        onValueChange={(value: string) => field.setValue(value)}
         {...props}
       />
       {errors?.length > 0 &&

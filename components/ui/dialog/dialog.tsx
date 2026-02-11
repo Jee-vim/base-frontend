@@ -5,7 +5,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { cn } from "@/lib/utils";
 import { IDialogDrawer } from "@/types/global";
 
-export default function CDialog({
+export default function UIDialog({
   children,
   trigger,
   isPadding = true,

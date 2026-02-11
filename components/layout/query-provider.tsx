@@ -72,7 +72,7 @@ function getQueryClient(opts?: { closeOverlay?: () => void }) {
   }
 }
 
-export default function QueryProvider({
+export default function LQueryProvider({
   children,
 }: {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
-import { Button } from "../button";
+import { UIButton } from "../ui";
 
 export default function SubmitBtn() {
-  return <Button type="submit">Submit</Button>;
+  return <UIButton type="submit">Submit</UIButton>;
 }

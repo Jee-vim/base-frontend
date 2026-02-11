@@ -1,6 +1,6 @@
 import { Toaster } from "sonner";
 
-export default function ToastProvider() {
+export default function LToastProvider() {
   return (
     <>
       <style>{`

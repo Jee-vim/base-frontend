@@ -29,7 +29,7 @@ const buttonVariants = cva(
   },
 );
 
-function Button({
+function UIButton({
   className,
   variant = "default",
   size = "sm",
@@ -52,4 +52,4 @@ function Button({
   );
 }
 
-export { Button, buttonVariants };
+export { UIButton, buttonVariants };

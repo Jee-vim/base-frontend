@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { IoIosCheckmark } from "react-icons/io";
 import { GoChevronUp, GoChevronDown } from "react-icons/go";
-import { SelectProps } from "../types";
+import { SelectProps } from "../../form/types";
 import Image from "next/image";
 
-const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
+const UISelect = React.forwardRef<HTMLButtonElement, SelectProps>(
   (
     {
       groups,
@@ -128,4 +128,4 @@ const SelectItem = React.forwardRef<
   );
 });
 
-export default Select;
+export default UISelect;
