@@ -1,7 +1,7 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { InputAreaFormProps } from "../types";
 import Image from "next/image";
-import { InputWrapper } from "./input-wrapper";
+import { InputWrapper } from "@/components/ui/input/wrapper";
 
 export default function FInputArea({
   label,
@@ -21,7 +21,7 @@ export default function FInputArea({
         {icon && (
           <Image
             src={icon}
-            alt="${field.name}-icon"
+            alt={`${field.name}-icon`}
             width={18}
             height={18}
             className="pt-1"

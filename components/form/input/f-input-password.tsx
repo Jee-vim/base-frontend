@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useFieldState } from "../hooks/useFieldState";
 import { InputFormProps } from "../types";
-import { InputWrapper } from "./input-wrapper";
+import { InputWrapper } from "@/components/ui/input/wrapper";
 
 export default function FInputPassword({
   label,
@@ -17,7 +17,7 @@ export default function FInputPassword({
     <InputWrapper label={label} htmlFor={field.name} error={error}>
       <div className="input-trigger">
         {icon && (
-          <Image src={icon} alt="${field.name}-icon" width={18} height={18} />
+          <Image src={icon} alt={`${field.name}-icon`} width={18} height={18} />
         )}
         <input
           {...inputProps}

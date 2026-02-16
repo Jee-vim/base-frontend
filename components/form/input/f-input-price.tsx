@@ -1,7 +1,7 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { InputFormProps } from "../types";
-import { Input } from "./input";
-import { InputWrapper } from "./input-wrapper";
+import { Input } from "@/components/ui/input";
+import { InputWrapper } from "@/components/ui/input/wrapper";
 
 export default function FInputPrice({ label, ...inputProps }: InputFormProps) {
   const { field, error } = useFieldState();

@@ -1,5 +1,5 @@
 import { useFieldState } from "../hooks/useFieldState";
-import Checkbox from "./checkbox";
+import { Checkbox } from "@/components/ui/input";
 
 interface FInputCheckboxMultiProps {
   label?: string;

@@ -1,7 +1,7 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { SelectSearchProps } from "../types";
 import { UISelectSearch } from "../../ui";
-import { InputWrapper } from "../input/input-wrapper";
+import { InputWrapper } from "@/components/ui/input/wrapper";
 
 export default function FSelectSearch({ label, ...props }: SelectSearchProps) {
   const { field, error } = useFieldState();

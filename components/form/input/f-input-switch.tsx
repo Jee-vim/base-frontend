@@ -1,5 +1,5 @@
 import { useFieldState } from "../hooks/useFieldState";
-import Switch from "./switch";
+import { Switch } from "@/components/ui/input";
 
 interface FInputSwitchProps {
   label?: string;

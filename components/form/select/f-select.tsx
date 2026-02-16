@@ -1,7 +1,7 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { SelectProps } from "../types";
 import { UISelect } from "../../ui";
-import { InputWrapper } from "../input/input-wrapper";
+import { InputWrapper } from "@/components/ui/input/wrapper";
 
 export default function FSelect({ label, ...props }: SelectProps) {
   const { field, error } = useFieldState();
