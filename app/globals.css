@@ -98,6 +98,11 @@
   font-weight: 500;
 }
 
+.input-wrapper > .info {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
 .input-trigger {
   width: 100%;
   min-height: 35px;

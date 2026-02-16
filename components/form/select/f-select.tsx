@@ -1,19 +1,18 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { SelectProps } from "../types";
 import { UISelect } from "../../ui";
+import { InputWrapper } from "../input/input-wrapper";
 
 export default function FSelect({ label, ...props }: SelectProps) {
   const { field, error } = useFieldState();
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper label={label} htmlFor={field.name} error={error}>
       <UISelect
         value={(field.state.value ?? "") as string}
         onValueChange={(value: string) => field.setValue(value)}
         {...props}
       />
-      {error && <p className="error">{error}</p>}
-    </div>
+    </InputWrapper>
   );
 }

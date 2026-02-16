@@ -1,13 +1,13 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { InputFormProps } from "../types";
 import { Input } from "./input";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInputPrice({ label, ...inputProps }: InputFormProps) {
   const { field, error } = useFieldState();
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper label={label} htmlFor={field.name} error={error}>
       <Input
         {...inputProps}
         id={field.name}
@@ -19,7 +19,6 @@ export default function FInputPrice({ label, ...inputProps }: InputFormProps) {
         }}
         onBlur={field.handleBlur}
       />
-      {error && <p className="error">{error}</p>}
-    </div>
+    </InputWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import { useFieldState } from "../hooks/useFieldState";
 import { InputAreaFormProps } from "../types";
 import Image from "next/image";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInputArea({
   label,
@@ -12,8 +13,7 @@ export default function FInputArea({
   const { field, error } = useFieldState();
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper label={label} htmlFor={field.name} error={error} info={info}>
       <div
         className="input-trigger h-auto items-start"
         data-disabled={props.disabled ? "" : undefined}
@@ -39,8 +39,6 @@ export default function FInputArea({
           className={className}
         />
       </div>
-      {info && <p className="text-xs">{info}</p>}
-      {error && <p className="error">{error}</p>}
-    </div>
+    </InputWrapper>
   );
 }
