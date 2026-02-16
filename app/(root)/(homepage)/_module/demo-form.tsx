@@ -47,6 +47,10 @@ export default function DemoForm() {
           validators={{ onChange: VPrice }}
         />
         <form.AppField
+          name="switch"
+          children={(f) => <f.FInputSwitch label="Switch" />}
+        />
+        <form.AppField
           name="radio"
           children={(f) => (
             <>
@@ -106,19 +110,6 @@ export default function DemoForm() {
               label="Fruit"
               placeholder="select"
               option={DUMMY_GROUP[0].items}
-              required
-            />
-          )}
-          validators={{ onChange: VRequired }}
-        />
-        <form.AppField
-          name="fruit"
-          children={(f) => (
-            <f.FSelectSearch
-              label="Fruit"
-              placeholder="select"
-              option={DUMMY_GROUP[0].items}
-              disabled
               required
             />
           )}

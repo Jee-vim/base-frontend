@@ -12,6 +12,7 @@ import FInputArea from "./input/f-input-area";
 import FInputRadio from "./input/f-input-radio";
 import FInputCheckbox from "./input/f-input-checkbox";
 import FInputCheckboxMulti from "./input/f-input-checkbox-multi";
+import FInputSwitch from "./input/f-input-switch";
 
 // ref: https://github.com/TanStack/form/discussions/1200
 // NOTE: all input comp that use tanstact/form must stored here and start within 'f' (for consistent name)
@@ -24,6 +25,7 @@ export const { useAppForm } = createFormHook({
     FInputRadio,
     FInputCheckbox,
     FInputCheckboxMulti,
+    FInputSwitch,
     FSelect,
     FSelectSearch,
   },
