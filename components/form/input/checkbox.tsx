@@ -1,18 +1,23 @@
 import { ChangeEvent } from "react";
-import { InputCheckboxFormProps } from "../types";
 import { cn } from "@/lib/utils";
 
-export default function Checkbox<T>({
+interface CheckboxProps {
+  checked?: boolean;
+  onCheckedChange?: (checked: boolean) => void;
+  label?: string;
+  disabled?: boolean;
+  className?: string;
+}
+
+export default function Checkbox({
   checked,
-  optionValue,
-  onChange,
+  onCheckedChange,
   label,
   disabled = false,
   className,
-  ...props
-}: InputCheckboxFormProps<T>) {
+}: CheckboxProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.checked ? optionValue : undefined);
+    onCheckedChange?.(e.target.checked);
   };
 
   return (
@@ -28,7 +33,6 @@ export default function Checkbox<T>({
         disabled={disabled}
         onChange={handleChange}
         className="sr-only"
-        {...props}
       />
 
       <span

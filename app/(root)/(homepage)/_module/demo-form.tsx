@@ -1,7 +1,7 @@
 import { useAppForm } from "@/components/form";
 import { DUMMY_GROUP } from "@/lib/constants";
 import { IconEmail } from "@/lib/image";
-import { VBool, VEmail, VPrice, VRequired } from "@/lib/validation";
+import { VEmail, VPrice, VRequired } from "@/lib/validation";
 
 export default function DemoForm() {
   const form = useAppForm({
@@ -50,32 +50,28 @@ export default function DemoForm() {
           name="radio"
           children={(f) => (
             <>
-              <f.FInputRadio optionValue={true} label="true" />
-              <f.FInputRadio optionValue={false} label="false" disabled />
+              <f.FInputRadio optionValue={true} optionLabel="true" />
+              <f.FInputRadio optionValue={false} optionLabel="false" disabled />
             </>
           )}
-          validators={{ onChange: VBool }}
         />
         <form.AppField
           name="checkbox"
-          children={(f) => (
-            <f.FInputCheckbox optionValue={"12345"} label="checkbox" disabled />
-          )}
+          children={(f) => <f.FInputCheckbox label="checkbox" disabled />}
         />
         <form.AppField
           name="checkboxMulti"
           children={(f) => (
-            <div className="flex flex-col gap-[8px] mt-[8px]">
-              {Array.from({ length: 5 }).map((_, id) => {
-                return (
-                  <f.FInputCheckboxMulti
-                    key={id}
-                    optionValue={String(id)}
-                    label={`checkbox ${id}`}
-                  />
-                );
-              })}
-            </div>
+            <f.FInputCheckboxMulti
+              label="Select options"
+              options={[
+                { label: "Option 1", value: "1" },
+                { label: "Option 2", value: "2" },
+                { label: "Option 3", value: "3" },
+                { label: "Option 4", value: "4" },
+                { label: "Option 5", value: "5" },
+              ]}
+            />
           )}
         />
         <form.AppField
@@ -98,6 +94,18 @@ export default function DemoForm() {
               placeholder="select"
               groups={DUMMY_GROUP}
               disabled
+              required
+            />
+          )}
+          validators={{ onChange: VRequired }}
+        />
+        <form.AppField
+          name="fruit"
+          children={(f) => (
+            <f.FSelectSearch
+              label="Fruit"
+              placeholder="select"
+              option={DUMMY_GROUP[0].items}
               required
             />
           )}

@@ -1,24 +1,19 @@
-import { useStore } from "@tanstack/react-form";
+import { useFieldState } from "../hooks/useFieldState";
 import { SelectProps } from "../types";
 import { UISelect } from "../../ui";
-import { useFieldContext } from "..";
-import { InputWrapper } from "../input/input-wrapper";
 
 export default function FSelect({ label, ...props }: SelectProps) {
-  const field = useFieldContext<string>();
-  const errors = useStore(field.store, (state) => state.meta.errors);
+  const { field, error } = useFieldState();
 
   return (
-    <InputWrapper
-      label={label}
-      htmlFor={field.name}
-      error={errors?.[0]?.message}
-    >
+    <div className="input-wrapper">
+      {label && <label htmlFor={field.name}>{label}</label>}
       <UISelect
-        value={field.state.value ?? ""}
+        value={(field.state.value ?? "") as string}
         onValueChange={(value: string) => field.setValue(value)}
         {...props}
       />
-    </InputWrapper>
+      {error && <p className="error">{error}</p>}
+    </div>
   );
 }

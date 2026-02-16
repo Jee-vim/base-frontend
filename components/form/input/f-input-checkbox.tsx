@@ -1,30 +1,26 @@
-import { useStore } from "@tanstack/react-form";
-import { useFieldContext } from "..";
-import { cn } from "@/lib/utils";
-import { InputCheckboxFormProps } from "../types";
+import { useFieldState } from "../hooks/useFieldState";
 import Checkbox from "./checkbox";
 
-export default function FInputCheckbox<T>({
-  label,
-  optionValue,
-  className,
-  ...props
-}: Omit<InputCheckboxFormProps<T>, "checked" | "onChange">) {
-  const field = useFieldContext<T | undefined>();
-  const errors = useStore(field.store, (state) => state.meta.errors);
+interface FInputCheckboxProps {
+  label?: string;
+  disabled?: boolean;
+}
 
-  const checked = field.state.value === optionValue;
+export default function FInputCheckbox({
+  label,
+  disabled,
+}: FInputCheckboxProps) {
+  const { field, error } = useFieldState();
 
   return (
-    <div className={cn("input-wrapper", className)}>
+    <div>
       <Checkbox
-        checked={checked}
-        optionValue={optionValue}
-        onChange={(val) => field.setValue(val)}
+        checked={field.state.value as boolean}
+        onCheckedChange={(checked: boolean) => field.setValue(checked)}
         label={label}
-        {...props}
+        disabled={disabled}
       />
-      {errors?.[0] && <p className="error">{errors[0].message}</p>}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }

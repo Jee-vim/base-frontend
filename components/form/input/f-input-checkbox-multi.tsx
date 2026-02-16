@@ -1,37 +1,44 @@
-import { useStore } from "@tanstack/react-form";
-import { useFieldContext } from "..";
-import { cn } from "@/lib/utils";
-import { InputCheckboxFormProps } from "../types";
+import { useFieldState } from "../hooks/useFieldState";
 import Checkbox from "./checkbox";
 
-export default function FInputCheckboxMulti<T>({
-  label,
-  optionValue,
-  className,
-  ...props
-}: Omit<InputCheckboxFormProps<T>, "checked" | "onChange">) {
-  const field = useFieldContext<T[]>();
-  const errors = useStore(field.store, (state) => state.meta.errors);
+interface FInputCheckboxMultiProps {
+  label?: string;
+  options: { label: string; value: string }[];
+  disabled?: boolean;
+}
 
-  const value = field.state.value ?? [];
-  const checked = value.includes(optionValue);
+export default function FInputCheckboxMulti({
+  label,
+  options,
+  disabled,
+}: FInputCheckboxMultiProps) {
+  const { field, error } = useFieldState();
+
+  const values = (field.state.value as string[]) || [];
+
+  const handleCheckedChange = (optionValue: string, checked: boolean) => {
+    if (checked) {
+      field.setValue([...values, optionValue]);
+    } else {
+      field.setValue(values.filter((v) => v !== optionValue));
+    }
+  };
 
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
-      <Checkbox
-        checked={checked}
-        optionValue={optionValue}
-        onChange={(val) => {
-          field.setValue(
-            val
-              ? [...value, optionValue]
-              : value.filter((v) => v !== optionValue),
-          );
-        }}
-        label={label}
-        {...props}
-      />
-      {errors?.[0] && <p className="error">{errors[0].message}</p>}
+    <div>
+      {label && <p className="label">{label}</p>}
+      {options.map((option) => (
+        <Checkbox
+          key={option.value}
+          checked={values.includes(option.value)}
+          onCheckedChange={(checked: boolean) =>
+            handleCheckedChange(option.value, checked)
+          }
+          label={option.label}
+          disabled={disabled}
+        />
+      ))}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }

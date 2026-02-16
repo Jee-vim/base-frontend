@@ -28,6 +28,7 @@ export interface InputRadioFormProps<T extends RadioValue>
   extends InputCommonProps,
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
   optionValue: T;
+  optionLabel: string;
 }
 export interface InputCheckboxFormProps<T>
   extends Omit<
@@ -38,6 +39,10 @@ export interface InputCheckboxFormProps<T>
   checked: boolean;
   optionValue: T;
   onChange: (value: T | undefined) => void;
+}
+
+export interface InputCheckboxMultiFormProps extends InputCommonProps {
+  options: { label: string; value: string }[];
 }
 
 export interface SelectProps extends SelectCommonProps {

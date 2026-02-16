@@ -1,28 +1,25 @@
-import { useStore } from "@tanstack/react-form";
-import { useFieldContext } from "..";
+import { useFieldState } from "../hooks/useFieldState";
 import { InputFormProps } from "../types";
 import { Input } from "./input";
-import { InputWrapper } from "./input-wrapper";
 
 export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
-  const field = useFieldContext<string>();
-  const errors = useStore(field.store, (state) => state.meta.errors);
+  const { field, error } = useFieldState();
 
   return (
-    <InputWrapper
-      label={label}
-      htmlFor={field.name}
-      error={errors?.[0]?.message}
-    >
+    <div className="input-wrapper">
+      {label && <label htmlFor={field.name}>{label}</label>}
       <Input
         {...inputProps}
         icon={icon}
         id={field.name}
         name={field.name}
-        value={field.state.value ?? ""}
-        onChange={(e) => field.setValue(e.target.value)}
+        value={(field.state.value ?? "") as string}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          field.setValue(e.target.value)
+        }
         onBlur={field.handleBlur}
       />
-    </InputWrapper>
+      {error && <p className="error">{error}</p>}
+    </div>
   );
 }
