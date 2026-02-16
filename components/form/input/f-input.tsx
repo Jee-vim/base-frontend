@@ -2,14 +2,18 @@ import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
 import { InputFormProps } from "../types";
 import { Input } from "./input";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
   const field = useFieldContext<string>();
   const errors = useStore(field.store, (state) => state.meta.errors);
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper
+      label={label}
+      htmlFor={field.name}
+      error={errors?.[0]?.message}
+    >
       <Input
         {...inputProps}
         icon={icon}
@@ -19,12 +23,6 @@ export default function FInput({ label, icon, ...inputProps }: InputFormProps) {
         onChange={(e) => field.setValue(e.target.value)}
         onBlur={field.handleBlur}
       />
-      {errors?.length > 0 &&
-        errors.map((it) => (
-          <p key={it} className="error">
-            {it.message}
-          </p>
-        ))}
-    </div>
+    </InputWrapper>
   );
 }

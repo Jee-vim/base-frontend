@@ -4,6 +4,7 @@ import Image from "next/image";
 import { InputFormProps } from "../types";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInputPassword({
   label,
@@ -15,9 +16,11 @@ export default function FInputPassword({
   const [show, setShow] = useState(false);
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
-
+    <InputWrapper
+      label={label}
+      htmlFor={field.name}
+      error={errors?.[0]?.message}
+    >
       <div className="input-trigger">
         {icon && (
           <Image src={icon} alt={`${field.name}-icon`} width={18} height={18} />
@@ -40,12 +43,6 @@ export default function FInputPassword({
           {show ? <FiEyeOff size={18} /> : <FiEye size={18} />}
         </button>
       </div>
-      {errors?.length > 0 &&
-        errors.map((it) => (
-          <p key={it} className="error">
-            {it.message}
-          </p>
-        ))}
-    </div>
+    </InputWrapper>
   );
 }

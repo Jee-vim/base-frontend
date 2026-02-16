@@ -2,6 +2,7 @@ import { useStore } from "@tanstack/react-form";
 import { useFieldContext } from "..";
 import { InputFormProps } from "../types";
 import { Input } from "./input";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInputPrice({
   label,
@@ -26,8 +27,11 @@ export default function FInputPrice({
   };
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper
+      label={label}
+      htmlFor={field.name}
+      error={errors?.[0]?.message}
+    >
       <Input
         {...inputProps}
         id={field.name}
@@ -39,12 +43,6 @@ export default function FInputPrice({
         }}
         onBlur={field.handleBlur}
       />
-      {errors?.length > 0 &&
-        errors.map((it) => (
-          <p key={it} className="error">
-            {it.message}
-          </p>
-        ))}
-    </div>
+    </InputWrapper>
   );
 }

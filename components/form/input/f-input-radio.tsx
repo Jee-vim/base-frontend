@@ -18,7 +18,6 @@ export default function FInputRadio<T extends string | number | boolean>({
   const errors = useStore(field.store, (s) => s.meta.errors);
 
   const domValue = String(optionValue);
-
   const checked = field.state.value === optionValue;
 
   return (
@@ -48,12 +47,7 @@ export default function FInputRadio<T extends string | number | boolean>({
         {label && <span className="text-sm font-semibold">{label}</span>}
       </label>
 
-      {errors?.length > 0 &&
-        errors.map((err, i) => (
-          <p key={i} className="error">
-            {err.message}
-          </p>
-        ))}
+      {errors?.[0] && <p className="error">{errors[0].message}</p>}
     </div>
   );
 }

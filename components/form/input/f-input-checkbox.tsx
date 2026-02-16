@@ -24,13 +24,7 @@ export default function FInputCheckbox<T>({
         label={label}
         {...props}
       />
-
-      {errors?.length > 0 &&
-        errors.map((it) => (
-          <p key={it.message} className="error">
-            {it.message}
-          </p>
-        ))}
+      {errors?.[0] && <p className="error">{errors[0].message}</p>}
     </div>
   );
 }

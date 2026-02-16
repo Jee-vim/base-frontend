@@ -31,13 +31,7 @@ export default function FInputCheckboxMulti<T>({
         label={label}
         {...props}
       />
-
-      {errors?.length > 0 &&
-        errors.map((it) => (
-          <p key={it.message} className="text-xs text-red-600">
-            {it.message}
-          </p>
-        ))}
+      {errors?.[0] && <p className="error">{errors[0].message}</p>}
     </div>
   );
 }

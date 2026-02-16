@@ -3,6 +3,7 @@ import { useFieldContext } from "..";
 import { useStore } from "@tanstack/react-form";
 import { InputAreaFormProps } from "../types";
 import Image from "next/image";
+import { InputWrapper } from "./input-wrapper";
 
 export default function FInputArea({
   label,
@@ -15,8 +16,12 @@ export default function FInputArea({
   const errors = useStore(field.store, (state) => state.meta.errors);
 
   return (
-    <div className="input-wrapper">
-      {label && <label htmlFor={field.name}>{label}</label>}
+    <InputWrapper
+      label={label}
+      htmlFor={field.name}
+      error={errors?.[0]?.message}
+      className={className}
+    >
       <div
         className="input-trigger h-auto! items-start!"
         data-disabled={props.disabled ? "" : undefined}
@@ -41,12 +46,6 @@ export default function FInputArea({
         />
       </div>
       {info && <p className="text-xs">{info}</p>}
-      {errors?.length > 0 &&
-        errors.map((i) => (
-          <p key={i} className="error">
-            {i.message}
-          </p>
-        ))}
-    </div>
+    </InputWrapper>
   );
 }
